@@ -12,9 +12,9 @@
 ---
 
 ### [HeapUtil.java](https://github.com/anastaci1a/algo26-pa-01/blob/master/src/assignment/heaps/HeapUtil.java)
-> *src/assignment/heaps/* **HeapUtil.java**
+> *./src/assignment/heaps/* **HeapUtil.java**
 
-| Public Methods                                               | Description                                                                                                                                                                                   |
+| Static Methods                                               | Description                                                                                                                                                                                   |
 |:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <code>void sort(List<T> list)</code>                         | Sort the entire input list <code>list</code>.                                                                                                                                                 |
 | <code>void sort(List<T> list, int size)</code>               | Sort a subset of the list <code>list</code>, by amount <code>size</code>.                                                                                                                     |
@@ -24,6 +24,6 @@
 ---
 
 ### [HeapTester.java](https://github.com/anastaci1a/algo26-pa-01/blob/master/test/HeapTester.java) – *Example Output*
-> *test/* **HeapUtil.java**
+> *./test/* **HeapTester.java**
 
 ![example-output](res/example-output-0.png)
