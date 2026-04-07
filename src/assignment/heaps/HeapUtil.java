@@ -8,20 +8,24 @@ import java.util.List;
 
 // main
 
-public interface HeapUtil {
+public class HeapUtil {
     // const
 
-    boolean ASCENDING = false;
+    public static boolean ASCENDING = false;
+
+    // no inst
+
+    private HeapUtil() {}
 
     // static
 
     /// Sort the entire input list {@code list}.
-    static <T extends Comparable<T>> void sort(List<T> list) {
+    public static <T extends Comparable<T>> void sort(List<T> list) {
         sort(list, list.size());
     }
 
     /// Sort a subset of the list {@code list}, by amount {@code size}.
-    static <T extends Comparable<T>> void sort(List<T> list, int size) {
+    public static <T extends Comparable<T>> void sort(List<T> list, int size) {
         maxHeapify(list, size);              // build max heap from scratch (no requirements)
         for (int i = size - 1; i > 0; i--) { // start at end, decrement to start (excl.)
             swap(list, 0, i);                // swap current max with subset end {@code i}
@@ -30,7 +34,7 @@ public interface HeapUtil {
     }
 
     /// Reorder a subset of the list {@code list} into a max heap, by amount {@code size}.
-    static <T extends Comparable<T>> void maxHeapify(List<T> list, int size) {
+    public static <T extends Comparable<T>> void maxHeapify(List<T> list, int size) {
         int iStart = iParent(size - 1);     // get index of last child's parent ("half")
         for (int i = iStart; i >= 0; i--) { // start at "half", decrement to start (incl.)
             siftDown(list, i, size);        // rebuild max heap for each child node (all non-max heaps)
@@ -39,7 +43,7 @@ public interface HeapUtil {
 
     /// Reorder a subset of the list {@code list} into a max heap, by amount {@code size}.
     /// Requires that the left and right children of the node at index {@code start} are max heaps.
-    static <T extends Comparable<T>> void siftDown(List<T> list, int start, int end) {
+    public static <T extends Comparable<T>> void siftDown(List<T> list, int start, int end) {
         int l = iChildL(start);                      // (get left child index)
         int r = iChildR(start);                      // (get right child index)
 
