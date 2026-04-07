@@ -1,59 +1,82 @@
 package assignment.heaps;
 
 
+// dep
+
+import java.util.List;
+
+
 // main
 
-public class HeapUtil {
-    // main
+public interface HeapUtil {
+    // const
 
-    /// Sort the entire input array {@code arr}.
-    public static void sort(int[] arr) {
-        sort(arr, arr.length);
+    boolean ASCENDING = false;
+
+    // static
+
+    /// Sort the entire input list {@code list}.
+    static <T extends Comparable<T>> void sort(List<T> list) {
+        sort(list, list.size());
     }
 
-    /// Sort a subset of the array {@code arr}, by amount {@code size}.
-    public static void sort(int[] arr, int size) {
-        maxHeapify(arr, size);               // build max heap from scratch (no requirements)
+    /// Sort a subset of the list {@code list}, by amount {@code size}.
+    static <T extends Comparable<T>> void sort(List<T> list, int size) {
+        maxHeapify(list, size);              // build max heap from scratch (no requirements)
         for (int i = size - 1; i > 0; i--) { // start at end, decrement to start (excl.)
-            swap(arr, 0, i);                 // swap current max with subset end {@code i}
-            siftDown(arr, 0, i);             // rebuild max heap after swap
+            swap(list, 0, i);                // swap current max with subset end {@code i}
+            siftDown(list, 0, i);            // rebuild max heap after swap
         }
     }
 
-    /// Reorder a subset of the array {@code arr} into a max heap, by amount {@code size}.
-    public static void maxHeapify(int[] arr, int size) {
+    /// Reorder a subset of the list {@code list} into a max heap, by amount {@code size}.
+    static <T extends Comparable<T>> void maxHeapify(List<T> list, int size) {
         int iStart = iParent(size - 1);     // get index of last child's parent ("half")
         for (int i = iStart; i >= 0; i--) { // start at "half", decrement to start (incl.)
-            siftDown(arr, i, size);         // rebuild max heap for each child node (all non- max heaps)
+            siftDown(list, i, size);        // rebuild max heap for each child node (all non-max heaps)
         }
     }
 
-    /// Reorder a subset of the array {@code arr} into a max heap, by amount {@code size}.
+    /// Reorder a subset of the list {@code list} into a max heap, by amount {@code size}.
     /// Requires that the left and right children of the node at index {@code start} are max heaps.
-    public static void siftDown(int[] arr, int start, int end) {
-        int l = iChildL(start);                  // (get left child index)
-        int r = iChildR(start);                  // (get right child index)
+    static <T extends Comparable<T>> void siftDown(List<T> list, int start, int end) {
+        int l = iChildL(start);                      // (get left child index)
+        int r = iChildR(start);                      // (get right child index)
 
-        int iMax = l;                            // set greatest val to left child
+        int iMax = l;                                // set max val to left child
 
-        if (r < end && arr[r] > arr[l]) {        // if right child in range, and right > left...
-            iMax = r;                            // ...set max to right child
+        if (r < end && compare(list, r, l)) {        // if right child in range, and right node > left node...
+            iMax = r;                                // ...set max to right child
         }
 
-        if (l < end && arr[iMax] > arr[start]) { // if left child in range, greatest > current
-            swap(arr, start, iMax);              // ...swap current and greatest
-            siftDown(arr, iMax, end);            // ...recursively sift down to rebuild max heap after swap
+        if (l < end && compare(list, iMax, start)) { // if left child in range, and max node > current node...
+            swap(list, start, iMax);                 // ...swap current and max
+            siftDown(list, iMax, end);               // ...recursively sift down to rebuild max heap after swap
         }
     }
 
     // priv util
 
-    /// Swap the values at index {@code i} and {@code j} in array {@code arr}.
-    private static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
+    /// Compare the values at index {@code i} and {@code j} in list {@code list} (determined by {@code HeapUtil.ASCENDING}).
+    private static <T extends Comparable<T>> boolean compare(List<T> list, int i, int j) {
+        if (ASCENDING) return lt(list, j, i);
+        else return lt(list, i, j);
+    }
 
-        arr[i] = arr[j];
-        arr[j] = temp;
+    /// Compare the values at index {@code i} and {@code j} in list {@code list} ({@code list.at(i) < list.at(j)}).
+    private static <T extends Comparable<T>> boolean lt(List<T> list, int i, int j) {
+        T iVal = list.get(i);
+        T jVal = list.get(j);
+
+        return iVal.compareTo(jVal) < 0; // less than
+    }
+
+    /// Swap the values at index {@code i} and {@code j} in list {@code list}.
+    private static <T extends Comparable<T>> void swap(List<T> list, int i, int j) {
+        T temp = list.get(i);
+
+        list.set(i, list.get(j));
+        list.set(j, temp);
     }
 
     /// Get the left child's index of a node at index {@code i}.
