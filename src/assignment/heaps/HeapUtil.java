@@ -6,12 +6,12 @@ package assignment.heaps;
 public class HeapUtil {
     // main
 
-    /// Sort the entire input array {@code arr}
+    /// Sort the entire input array {@code arr}.
     public static void sort(int[] arr) {
         sort(arr, arr.length);
     }
 
-    /// Sort a subset of the array {@code arr}, by amount {@code size}
+    /// Sort a subset of the array {@code arr}, by amount {@code size}.
     public static void sort(int[] arr, int size) {
         maxHeapify(arr, size);               // build max heap from scratch (no requirements)
         for (int i = size - 1; i > 0; i--) { // start at end, decrement to start (excl.)
