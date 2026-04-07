@@ -6,7 +6,6 @@ import assignment.heaps.HeapUtil;
 import assignment.ana.io.cli.Cli;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
