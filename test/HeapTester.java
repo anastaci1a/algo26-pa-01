@@ -23,7 +23,7 @@ public class HeapTester {
     // cli
 
     public static final Cli.TextFamily out = Cli.TextFamily.DEFAULT.withModif(
-        Palette.getRandom(), // random color for TextType style
+        Palette.getRandom(), // random colors for TextType styles
         null, null
     );
 

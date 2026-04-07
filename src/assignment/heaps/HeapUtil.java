@@ -64,7 +64,7 @@ public class HeapUtil {
     /// Compare the values at index {@code i} and {@code j} in list {@code list} (determined by {@code HeapUtil.ASCENDING}).
     private static <T extends Comparable<T>> boolean compare(List<T> list, int i, int j) {
         if (ASCENDING) return lt(list, j, i);
-        else return lt(list, i, j);
+        return lt(list, i, j);
     }
 
     /// Compare the values at index {@code i} and {@code j} in list {@code list} ({@code list.at(i) < list.at(j)}).
