@@ -14,11 +14,11 @@
 ### [HeapUtil.java](https://github.com/anastaci1a/algo26-pa-01/blob/master/src/assignment/heaps/HeapUtil.java)
 > *src/assignment/heaps/* **HeapUtil.java**
 
-| Public Methods                                               | Description                                                                                                                                                                                   |
-|:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <code>void sort(List<T> list)</code>                         | Sort the entire input list <code>list</code>.                                                                                                                                                 |
-| <code>void sort(List<T> list, int size)</code>               | Sort a subset of the list <code>list</code>, by amount <code>size</code>.                                                                                                                     |
-| <code>void maxHeapify(List<T> list, int size)</code>         | Reorder a subset of the list <code>list</code> into a max heap, by amount <code>size</code>.                                                                                                  |
+| Public Methods                                               | Description                                                                                                                                                                                          |
+|:-------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <code>void sort(List<T> list)</code>                         | Sort the entire input list <code>list</code>.                                                                                                                                                        |
+| <code>void sort(List<T> list, int size)</code>               | Sort a subset of the list <code>list</code>, by amount <code>size</code>.                                                                                                                            |
+| <code>void maxHeapify(List<T> list, int size)</code>         | Reorder a subset of the list <code>list</code> into a max heap, by amount <code>size</code>.                                                                                                         |
 | <code>void siftDown(List<T> list, int start, int end)</code> | Reorder a subset of the list <code>list</code> into a max heap, by amount <code>size</code>. Requires that the left and right children of the node at index <code>start</code> are max heaps. |
 
 ---
